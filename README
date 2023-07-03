@@ -1,0 +1,6 @@
+"codigo"_2.0.ino = Utilizado no experimento com vegetacao
+"codigo"_1.0.ino = Utilizado no experimento com linha de visada
+
+read_serial.py 	 = Script python utilizado com os codigos 2.0.
+
+Tratamento de Dados.ipynb = jupyter notebook utilizado para o tratamento dos dados
