@@ -30,9 +30,9 @@ void setup(){
     while(1);
   } 
   Serial.println("Módulo Inicializado com sucesso!");
-  rf95.setFrequency(915.0); 
-
-
+  rf95.setFrequency(915.0);
+  rf95.setSignalBandwidth(125000);
+  rf95.setTxPower(13);
   
   //Criacao da mensagem
   Serial.println("Preparando base da mensagem para o envio.");

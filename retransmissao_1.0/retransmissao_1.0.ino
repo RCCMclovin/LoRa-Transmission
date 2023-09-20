@@ -14,7 +14,7 @@ int sf[] = { 7, 8, 9, 10, 11, 12}; //Valores do Spreading Factor
 int cr[] = {5, 8};                   //Valores do Coding Rate
 int i = 0, j = 0;                    //Variaveis para caminharmos pelo sf e cr
 char numero_retransmissao = '1';      //Número da estação de retransmissão para impedir loop com múltiplas estações
-                                      // O número da estação deve começar em 1 e estar entre 0 e 9, se acabarem os números, comece outra vez do 0
+                                      // O número da estação deve estar entre 1 e 9, se acabarem os números, comece outra vez do 1
 void setup() {
   //Configuracao do led
   pinMode(led, OUTPUT); 
@@ -29,7 +29,9 @@ void setup() {
     while(1);
   } 
   Serial.println("Módulo Inicializado com sucesso!");
-  rf95.setFrequency(915.0); 
+  rf95.setFrequency(915.0);
+  rf95.setSignalBandwidth(125000);
+  rf95.setTxPower(13);
 
   //Fim do Set Up
   Serial.println("Tudo certo! Para inicializar a captura, pressione o botão!");
@@ -83,15 +85,15 @@ void receiveMessage(){
     uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
     uint8_t len = sizeof(buf);
     if (rf95.recv(buf, &len)){
-      if((numero_retransmissao == '0' && buf[0] == '9' || buf[0]== numero_retransmissao-1)){
+      if((buf[0] == '0' || buf[0] == numero_retransmissao-1 || numero_retransmissao == '1' && buf[0] == '9')){
         //Caso a mensagem seja captada normalmente
         Serial.println((char*) buf);
-        digitalWrite(led, HIGH);
         Serial.print("---,+");
         if(numero_retransmissao < '9') buf[0]=numero_retransmissao;
-        else buf[0]='0';
+        else buf[0]='1';
         //Retransmite a mensagem
         //uint8_t data[] = "1Mensagem recebida.";
+        digitalWrite(led, HIGH);
         rf95.send(buf, len);
         rf95.waitPacketSent();
         
@@ -100,7 +102,7 @@ void receiveMessage(){
         Serial.print(rf95.lastRssi(), DEC);
         Serial.println(";");
         digitalWrite(led, LOW);
-        //Serial.println((char*) buf);
+        Serial.println((char*) buf);
         S += 1;
       }
     }
