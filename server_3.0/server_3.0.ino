@@ -29,8 +29,8 @@ void setup() {
   } 
   Serial.println("Módulo Inicializado com sucesso!");
   rf95.setFrequency(915.0);
-  rf95.setSignalBandwidth(125000);
-  rf95.setTxPower(13); 
+  rf95.setSignalBandwidth(62500);
+  rf95.setTxPower(20); 
 
   //Fim do Set Up
   Serial.println("Tudo certo! Para inicializar a captura, pressione o botão!");
