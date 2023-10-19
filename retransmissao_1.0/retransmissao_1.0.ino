@@ -56,7 +56,7 @@ void loop() {
   //Realiza a captura para a combinacao dos parametros ate o botao ser pressionado
   Serial.println("Inicializando captura, aperta o botão para encerrar.");
   while(!digitalRead(7)){
-    receiveMessage();
+    retransmitMessage();
   }
 
   //Log de quantas mensagens foram recebidas e quantas foram captadas, mas falharam em ser recebidas
@@ -78,7 +78,7 @@ void iteracao(){
 }
 
 //Funcao que realiza a captacao e envio de mensagens
-void receiveMessage(){
+void retransmitMessage(){
   
   //Recebe a mensagem
   if (rf95.available()){

@@ -35,7 +35,7 @@ void setup() {
   //Fim do Set Up
   Serial.println("Tudo certo! Para inicializar a captura, pressione o botão!");
   //Espera o botao ser pressionado para prosseguir a execucao
-  //while(!digitalRead(7));
+  while(!digitalRead(7));
   //delay(300);
 
 }
@@ -89,9 +89,9 @@ void receiveMessage(){
       Serial.print("---,+");
       
       //Responde a mensagem
-      //uint8_t data[] = "0Mensagem recebida.";
-      //rf95.send(data, sizeof(data));
-      //rf95.waitPacketSent();
+      uint8_t data[] = "0Mensagem recebida.";
+      rf95.send(data, sizeof(data));
+      rf95.waitPacketSent();
       
       
       Serial.print("---,");

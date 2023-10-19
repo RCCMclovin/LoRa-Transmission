@@ -43,11 +43,13 @@ void setup(){
   msg[250] = '\0';
   Serial.println("Mensagem preparada!");
 
+  /*
   rf95.setSpreadingFactor(sf[i]);
   Serial.println("Spreading Factor definido para " + String(sf[i]) + ".");
   
   rf95.setCodingRate4(cr[j]);
   Serial.println("Coding Rate definido para " + String(cr[j]) + ".");
+  //*/
 
   //Fim do Set Up
   //Serial.println("Para inicializar o experimento, pressione o botão.");
@@ -59,7 +61,7 @@ void loop(){
   F = 0;
   contador = 0;
 
-  /*
+  ///*
   //Espera o botao ser pressionado para prosseguir a execucao
   while(!digitalRead(7)) delay(500);
   //Configuracao dos valores de Spreading Factor e Coding Rate
@@ -80,15 +82,15 @@ void loop(){
   Serial.println("");
   Serial.println("Sequência finalizada.");
   Serial.println("Para esta sequência " + String(F) + " mensagens não foram respondiddas.");
-  //Serial.println("Para prosseguir os testes, pressione o botão.");
+  Serial.println("Para prosseguir os testes, pressione o botão.");
   Serial.println("");
-  /*
+  ///*
   while(!digitalRead(7));
   iteracao(); //Caminha pelos parametros do Lora
   Serial.println("");
   //*/
 }
-/*
+///*
 //Funcao que caminha pela combinacao dos valores do Spreading Factor e Coding Rate
 void iteracao(){
   if(i == 6 && j == 1){
