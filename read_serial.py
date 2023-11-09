@@ -4,7 +4,7 @@ import io
 from datetime import datetime
 
 #Inicializacao do Serial
-ser = serial.Serial('COM7', 9600)
+ser = serial.Serial('COM6', 9600)
 try:    
     ser.close()
 except:
@@ -26,19 +26,19 @@ while i < 10:
     cont = 0
     while cont < 100:
         #Leitura de serial
+        now = datetime.now()
         s=str(ser.readline())[2:].replace("\'","")\
               .replace("\\r","").replace("\\n","")
-
+        
         #Formatacao dos dados
         if "---" in s:
-            now = datetime.now()
-            current_time = now.strftime("%H:%M:%S")
+            current_time = now.strftime("%H:%M:%S.%f")
             s = s.replace("---",current_time)
             
         if '+' in s:
-            now = datetime.now()
-            current_time = now.strftime("%H:%M:%S")
             s=s.replace('+',"")
+            now = datetime.now()
+            current_time = now.strftime("%H:%M:%S.%f")
             s+=str(ser.readline())[2:].replace("\'","")\
               .replace("\\r","").replace("\\n","")\
               .replace("---",current_time)
