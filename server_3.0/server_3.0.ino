@@ -96,6 +96,8 @@ void receiveMessage(){
       
       Serial.print("---,");
       Serial.print(rf95.lastRssi(), DEC);
+      Serial.print(",");
+      Serial.print(rf95.lastSNR(),DEC);
       Serial.println(";");
       digitalWrite(led, LOW);
      
