@@ -37,7 +37,7 @@ void setup(){
   //Criacao da mensagem
   Serial.println("Preparando base da mensagem para o envio.");
   msg[0] = '0';
-  for(int x = 1; x < 6; x++){
+  for(int x = 1; x < 250; x++){
     msg[x] = 'a';
   }
   msg[250] = '\0';
@@ -119,12 +119,16 @@ void sendMessage(){
       //Caso a mensagem seja respondida normalmente
       Serial.print("---,True,");
       Serial.print(rf95.lastRssi(), DEC);
+      Serial.print(",");
+      Serial.print(rf95.lastSNR(),DEC);
       Serial.println(";");
      }
      else{
       //Caso a mensagem seja respondida, porem haja erro na sua captacao
       Serial.print("---,Fail,");
       Serial.print(rf95.lastRssi(), DEC);
+      Serial.print(",");
+      Serial.print(rf95.lastSNR(),DEC);
       Serial.println(";");
       F ++;}
      }

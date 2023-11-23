@@ -36,7 +36,7 @@ void setup() {
   Serial.println("Tudo certo! Para inicializar a captura, pressione o botão!");
   //Espera o botao ser pressionado para prosseguir a execucao
   while(!digitalRead(7));
-  //delay(300);
+  delay(300);
 
 }
 
