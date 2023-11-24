@@ -86,7 +86,7 @@ void receiveMessage(){
     if (rf95.recv(buf, &len)){
       //Caso a mensagem seja captada normalmente
       digitalWrite(led, HIGH);
-      Serial.print("---,+");
+      Serial.println("---,+");
       
       //Responde a mensagem
       uint8_t data[] = "0Mensagem recebida.";
