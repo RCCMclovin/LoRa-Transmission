@@ -22,8 +22,8 @@ arqs= [ "07-5.csv","07-8.csv",
 
 
 #Loop para os experimentos
-i = 0
-while i < len(args):
+i = 11
+while i < len(arqs):
     cont = 0
     while cont < 100:
         #Leitura de serial
