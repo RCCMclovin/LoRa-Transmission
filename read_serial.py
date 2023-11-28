@@ -4,7 +4,7 @@ import io
 from datetime import datetime
 
 #Inicializacao do Serial
-ser = serial.Serial('COM6', 9600)
+ser = serial.Serial('COM5', 9600)
 try:    
     ser.close()
 except:
@@ -12,7 +12,7 @@ except:
 ser.open()
 
 #Definicao dos arquivos de saida
-path = "./logs/"
+path = "./logs/client/"
 arqs= [ "07-5.csv","07-8.csv",
         "08-5.csv","08-8.csv",
         "09-5.csv","09-8.csv",
@@ -23,7 +23,7 @@ arqs= [ "07-5.csv","07-8.csv",
 
 #Loop para os experimentos
 i = 0
-while i < 10:
+while i < len(args):
     cont = 0
     while cont < 100:
         #Leitura de serial
